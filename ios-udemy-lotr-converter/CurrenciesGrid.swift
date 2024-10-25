@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CurrenciesGrid: View {
     
-    @State var selectedCurrency: Currency
+    @Binding var selectedCurrency: Currency
     
     var body: some View {
         ZStack {
@@ -34,5 +34,5 @@ struct CurrenciesGrid: View {
 }
 
 #Preview {
-    CurrenciesGrid(selectedCurrency: .goldPenny)
+    CurrenciesGrid(selectedCurrency: .constant(.goldPenny))
 }

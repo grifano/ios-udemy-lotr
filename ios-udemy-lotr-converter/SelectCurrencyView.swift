@@ -11,8 +11,8 @@ struct SelectCurrencyView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var fromCurrency: Currency
-    @State var toCurrency: Currency
+    @Binding var fromCurrency: Currency
+    @Binding var toCurrency: Currency
     
     var body: some View {
         ZStack {
@@ -29,7 +29,7 @@ struct SelectCurrencyView: View {
                     .multilineTextAlignment(.center)
                 
                 // Currencies Icons
-                CurrenciesGrid(selectedCurrency: fromCurrency)
+                CurrenciesGrid(selectedCurrency: $fromCurrency)
                 
                 // Description
                 Text("Select the currency you would like to convert to: ")
@@ -38,7 +38,7 @@ struct SelectCurrencyView: View {
                     .padding(.top, 24)
                 
                 // Currencies Icons
-                CurrenciesGrid(selectedCurrency: toCurrency)
+                CurrenciesGrid(selectedCurrency: $toCurrency)
                 
                 // Button dismiss
                 Button("Done") {
@@ -59,5 +59,5 @@ struct SelectCurrencyView: View {
 }
 
 #Preview {
-    SelectCurrencyView(fromCurrency: .goldPenny, toCurrency: .silverPenny)
+    SelectCurrencyView(fromCurrency: .constant(.goldPenny), toCurrency: .constant(.silverPenny))
 }

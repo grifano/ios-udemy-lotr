@@ -33,6 +33,7 @@ struct ExchangeRatesView: View {
                 ExchangeRate(leftCurrency: .goldPenny, rightCurrency: .silverPiece, text: "1 Gold Penny = 4 Silver Pieces")
                 ExchangeRate(leftCurrency: .silverPiece, rightCurrency: .silverPenny, text: "1 Silver Piece = 4 Silver Pennies")
                 ExchangeRate(leftCurrency: .silverPenny, rightCurrency: .copperPenny, text: "1 Silver Penny = 100 Copper Pennies")
+                ExchangeRate(leftCurrency: .gondorPenny, rightCurrency: .copperPenny, text: "1 Gondor Penny = 160 Copper Pennies")
                 
                 // Button dismiss
                 Button("Done") {
