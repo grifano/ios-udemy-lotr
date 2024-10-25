@@ -15,8 +15,11 @@ struct ContentView: View {
     @State var leftAmount = ""
     @State var rightAmount = ""
     
-    @State var leftCurrency: Currency = .goldPiece
-    @State var rightCurrency: Currency = .copperPenny
+    @FocusState var isLeftInputFocused
+    @FocusState var isRightInputFocused
+    
+    @State var leftCurrency: Currency = .silverPiece
+    @State var rightCurrency: Currency = .goldPenny
     
     var body: some View {
         ZStack {
@@ -44,12 +47,12 @@ struct ContentView: View {
                     VStack {
                         HStack {
                             // Currency Icon
-                            Image(.goldpenny)
+                            Image(leftCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 30)
                             // Currency Name
-                            Text("Gold Penny")
+                            Text(leftCurrency.name)
                                 .font(.headline)
                         }
                         // Textfield
@@ -58,6 +61,10 @@ struct ContentView: View {
                             .padding(12)
                             .background(.white)
                             .cornerRadius(10)
+                            .foregroundStyle(.black)
+                            .focused($isLeftInputFocused)
+                            .padding(.top, 8)
+                            .keyboardType(.decimalPad)
                     }
                     
                     // Equal icon
@@ -69,10 +76,10 @@ struct ContentView: View {
                     VStack {
                         HStack {
                             // Currency Name
-                            Text("Gold Penny")
+                            Text(rightCurrency.name)
                                 .font(.headline)
                             // Currency Icon
-                            Image(.goldpenny)
+                            Image(rightCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 30)
@@ -84,6 +91,10 @@ struct ContentView: View {
                             .background(.white)
                             .cornerRadius(10)
                             .multilineTextAlignment(.trailing)
+                            .foregroundStyle(.black)
+                            .focused($isRightInputFocused)
+                            .padding(.top, 8)
+                            .keyboardType(.decimalPad)
                     }
                 }
                 .padding()
@@ -110,6 +121,19 @@ struct ContentView: View {
                 }
             }
             .padding()
+        }
+        // Right to left
+        .onChange(of: rightAmount) {
+            if isRightInputFocused {
+                leftAmount = rightCurrency.convert(rightAmount, to: leftCurrency)
+            }
+        }
+        
+        // Left to Right
+        .onChange(of: leftAmount) {
+            if isLeftInputFocused {
+                rightAmount = leftCurrency.convert(leftAmount, to: rightCurrency)
+            }
         }
         .sheet(isPresented: $showRatesInfo) {
             ExchangeRatesView()
