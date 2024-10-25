@@ -34,7 +34,7 @@ struct ContentView: View {
                     .frame(height: 200)
                 
                 // Title
-                Text("Currency Converter")
+                Text("Currency Exchange")
                     .font(.largeTitle)
                     .foregroundStyle(.white)
                 
