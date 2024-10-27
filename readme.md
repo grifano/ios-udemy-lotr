@@ -1,9 +1,6 @@
 <img src="./public/grifano-logo.svg" alt="grifano logo" height="100"/>
 
-<img src="./public/ios.svg" alt="apple ios" height="50"/>
-<img src="./public/swift.svg" alt="Swift" height="50"/>
-<img src="./public/swiftui.svg" alt="SwiftUI" height="50"/>
-<img src="./public/xcode.svg" alt="XCode" height="50"/>
+<img src="./public/ios.svg" alt="apple ios" height="50"/> <img src="./public/swift.svg" alt="Swift" height="50"/> <img src="./public/swiftui.svg" alt="SwiftUI" height="50"/> <img src="./public/xcode.svg" alt="XCode" height="50"/>
 
 # Hi 👋 there!
 
