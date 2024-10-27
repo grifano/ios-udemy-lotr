@@ -17,9 +17,6 @@ Happy exploring!
 
 # Project: Lord Of The Ring - Currency Converter App
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges that help to improve
-coding skills by building realistic projects.
-
 ![](./public/github-showcase.webp)
 
 ### Overview
