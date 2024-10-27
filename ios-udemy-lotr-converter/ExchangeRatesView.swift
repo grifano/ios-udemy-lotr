@@ -17,6 +17,7 @@ struct ExchangeRatesView: View {
             Image(.parchment)
                 .resizable()
                 .ignoresSafeArea()
+                .background(.brown)
             
             VStack {
                 // Title
@@ -47,8 +48,6 @@ struct ExchangeRatesView: View {
             }
             .padding()
         }
-        .foregroundStyle(.black)
-        .background(.brown)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ContentView: View {
 
@@ -58,8 +59,12 @@ struct ContentView: View {
                                 .frame(width: 30)
                             // Currency Name
                             Text(leftCurrency.name)
-                                .font(.headline)
+                                .font(.system(size: 16, weight: .medium))
                         }
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
+                        
                         // Textfield
                         TextField("Amount", text: $leftAmount)
                             .textFieldStyle(.automatic)
@@ -82,13 +87,17 @@ struct ContentView: View {
                         HStack {
                             // Currency Name
                             Text(rightCurrency.name)
-                                .font(.headline)
+                                .font(.system(size: 16, weight: .medium))
                             // Currency Icon
                             Image(rightCurrency.image)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 30)
                         }
+                        .onTapGesture {
+                            showSelectCurrency.toggle()
+                        }
+                        
                         // Textfield
                         TextField("Amount", text: $rightAmount)
                             .textFieldStyle(.automatic)
@@ -106,9 +115,7 @@ struct ContentView: View {
                 .background(.black.opacity(0.5))
                 .cornerRadius(10)
                 .foregroundStyle(.white)
-                .onTapGesture {
-                    showSelectCurrency.toggle()
-                }
+                .popoverTip(CurrencyTip(), arrowEdge: .bottom)
 
                 // Pin buuton to the bottom using Spacer
                 Spacer()
@@ -132,7 +139,10 @@ struct ContentView: View {
             }
             .padding()
         }
-        // Dismiss keybord
+        // Currency Tip
+        .task {
+            try? Tips.configure()
+        }
 
         // Right to left
         .onChange(of: rightAmount) {

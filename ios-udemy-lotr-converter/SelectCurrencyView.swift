@@ -20,6 +20,7 @@ struct SelectCurrencyView: View {
             Image(.parchment)
                 .resizable()
                 .ignoresSafeArea()
+                .background(.brown)
             
             VStack {
                 
@@ -54,7 +55,6 @@ struct SelectCurrencyView: View {
             }
             .padding()
         }
-        .background(.brown)
     }
 }
 
